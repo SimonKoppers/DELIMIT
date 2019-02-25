@@ -17,7 +17,6 @@ def cart2sph(x, y, z):
 
         >>> cart2sph(1, 1, 1)
         (0.78539816339744828, 0.95531661812450919, 1.7320508075688772)
-
     """
     azimuthal_angle = np.arctan2(y, x)
     radial_distance = np.sqrt(x**2 + y**2 + z**2)
@@ -41,7 +40,6 @@ def sph2cart(azimuthal_angle, polar_angle, radial_distance):
 
         >>> cart2sph(0.78539816339744828, 0.95531661812450919, 1.7320508075688772)
         (0.99999999999999978, 0.99999999999999967, 1.0)
-
     """
     x = radial_distance * np.sin(polar_angle) * np.cos(azimuthal_angle)
     y = radial_distance * np.sin(polar_angle) * np.sin(azimuthal_angle)

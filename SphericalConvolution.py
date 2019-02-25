@@ -7,6 +7,29 @@ from pyquaternion import Quaternion
 
 
 class LocalSphericalConvolution(nn.Module):
+    """
+    defines the LocalSphericalConvolution as a torch module, which can be utilized within a DL network
+
+    Args:
+        shells_in  (int):                   number of input shells
+        shells_out  (int):                  number of output shells
+        sh_order_in  (int):                 Spherical Harmonic order of the input signal
+        sh_order_out  (int):                Spherical Harmonic order of the output signal
+        sampled_gradients  (np.array, Nx3): gradients that are given by the signal, or shall be used during application
+        kernel_sizes (list):                list of number of sampled points arround each sampled gradient point.
+                                            Each entry defines a new angular circle around the gradient.
+        lb_lambda (float):                  laplace beltrami regularization during SH fit (e.g. 0.006 ).
+
+    Example::
+
+        lsc = LocalSphericalConvolution(shells_in=3, shells_out=128,
+                                        sh_order_in=4, sh_order_out=8, lb_lambda=0.006,
+                                        sampled_gradients=np.ones((30, 3)), kernel_sizes=[5, 5],
+                                        angular_distance=(np.pi / 10))
+
+        input_tensor = torch.zeros((128, 15*3, 5, 5, 5))
+        output_tensor = lsc(input_tensor)
+    """
 
     def __init__(self, shells_in, shells_out, sh_order_in, sh_order_out, sampled_gradients, kernel_sizes,
                  lb_lambda=0.006, angular_distance=0):
