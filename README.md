@@ -4,10 +4,10 @@ This repository contains the [PyTorch](https://pytorch.org) implementation of [o
 
 ## Contents
 * [Installation](#installation)
+* [Requirements](#requirements)
 * [Usage](#usage)
   * [By Scripts](#by-scripts)
-  * [From Python](#from-python)
-  * [Pretrained Weights](#pretrained-weights)
+  * [Data Preprocessing](#preprocessing)
  * [Our Paper](#our-paper)
 
 ## Requirements
@@ -21,7 +21,7 @@ scipy, numpy, torch, pyquaternion
 ### By Scripts
 For simplicity a simple example jupyter notebook is provided within the github repository
 
-#### Data Preprocessing
+### Data Preprocessing
 In order to apply Spherical Harmonic Transformations, or any kind of convolution, the diffusion signal needs to be divided by its b=0 measurement.
 
 ## Our Paper
