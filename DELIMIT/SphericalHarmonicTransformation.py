@@ -2,7 +2,7 @@ from scipy import special as sci
 import torch.nn as nn
 import numpy as np
 import torch
-from utils import sph2cart, cart2sph
+from DELIMIT.utils import sph2cart, cart2sph
 
 
 class Signal2SH(nn.Module):

@@ -1,5 +1,5 @@
 from torch.nn.modules.loss import _Loss
-from SphericalHarmonicTransformation import SH2Signal
+from DELIMIT.SphericalHarmonicTransformation import SH2Signal
 import torch
 
 

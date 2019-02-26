@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from utils import sph2cart
-from SphericalHarmonicTransformation import SH2Signal, Signal2SH
+from DELIMIT.utils import sph2cart
+from DELIMIT.SphericalHarmonicTransformation import SH2Signal, Signal2SH
 from pyquaternion import Quaternion
 
 
@@ -107,6 +107,20 @@ class LocalSphericalConvolution(nn.Module):
 
 
 class SphericalConvolution(nn.Module):
+    """
+    defines the SphericalConvolution as a torch module, which can be utilized within a DL network
+
+    Args:
+        shells_in  (int):                   number of input shells
+        shells_out  (int):                  number of output shells
+        sh_order  (int):                    utilzed Spherical Harmonic order
+
+    Example::
+
+        sc = SphericalConvolution(shells_in=3, shells_out=128, sh_order=8)
+        input_tensor = torch.zeros((128, 45*3, 5, 5, 5))
+        output_tensor = lsc(input_tensor)
+    """
 
     def __init__(self, shells_in, shells_out, sh_order):
         super(SphericalConvolution, self).__init__()
@@ -118,17 +132,15 @@ class SphericalConvolution(nn.Module):
         self.weight = nn.Parameter(torch.randn((shells_out, shells_in, int(self.sh_order / 2) + 1)))
         self.bias = nn.Parameter(torch.zeros((shells_out, 1)))
 
-        self.sh_indices = torch.zeros(self.ncoeff).long()
+        sh_indices = torch.zeros(self.ncoeff).long()
         last_coeff = 0
         for id_order in range(0, int(self.sh_order / 2) + 1):
             sh_order = id_order * 2
             ncoeff = int((sh_order + 1) * (sh_order / 2 + 1))
-            self.sh_indices[last_coeff:ncoeff] = id_order
+            sh_indices[last_coeff:ncoeff] = id_order
             last_coeff = ncoeff
 
-        if torch.cuda.is_available():
-            self.sh_indices = self.sh_indices.cuda()
-
+        self.sh_indices = torch.nn.Parameter(sh_indices.long(), requires_grad=False)
         nn.init.kaiming_normal_(self.weight, mode='fan_out', nonlinearity='relu')
         nn.init.kaiming_normal_(self.bias, mode='fan_out', nonlinearity='relu')
 
