@@ -1,0 +1,6 @@
+numpy
+nibabel
+scipy
+dipy
+torch
+pyquaternion
