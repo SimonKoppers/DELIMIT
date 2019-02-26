@@ -5,5 +5,6 @@ setuptools.setup(
     version="1.0.0",
     author="Simon Koppers",
     author_email="Simon.Koppers@lfb.rwth-aachen.de",
-    packages=setuptools.find_packages()
+    packages=setuptools.find_packages(),
+    install_requires=['numpy', 'scipy', 'dipy', 'torch', 'pyquaternion']
 )
