@@ -1,5 +1,4 @@
 numpy
-nibabel
 scipy
 dipy
 torch

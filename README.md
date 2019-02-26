@@ -10,6 +10,10 @@ This repository contains the [PyTorch](https://pytorch.org) implementation of [o
   * [Pretrained Weights](#pretrained-weights)
  * [Our Paper](#our-paper)
 
+## Requirements
+required packages are:
+scipy, numpy, torch, pyquaternion
+
 ## Installation
 `pip install git+https://github.com/SimonKoppers/DELIMIT` 
 
