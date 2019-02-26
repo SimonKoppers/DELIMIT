@@ -19,7 +19,7 @@ scipy, numpy, torch, pyquaternion
 
 ## Usage
 ### By Scripts
-For simplicity a simple example jupyter notebook is provided within the github repository
+For simplicity a simple [example jupyter notebook](https://github.com/SimonKoppers/DELIMIT/blob/master/example.ipynb) is provided within the github repository.
 
 ### Data Preprocessing
 In order to apply Spherical Harmonic Transformations, or any kind of convolution, the diffusion signal needs to be divided by its b=0 measurement.
