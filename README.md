@@ -11,11 +11,11 @@ This repository contains the [PyTorch](https://pytorch.org) implementation of [o
  * [Our Paper](#our-paper)
 
 ## Installation
-`pip install git+https://github.com/justusschock/shapenet` 
+`pip install git+https://github.com/SimonKoppers/DELIMIT` 
 
 ## Usage
 ### By Scripts
-For simplicity a simple example script is provided within the github repository
+For simplicity a simple example jupyter notebook is provided within the github repository
 
 #### Data Preprocessing
 In order to apply Spherical Harmonic Transformations, or any kind of convolution, the diffusion signal needs to be divided by its b=0 measurement.
